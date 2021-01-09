@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { MongoModule } from 'nest-mongodb';
 import { UsersController } from './controllers/users/users.controller';
 import * as fs from 'fs';
+import "reflect-metadata";
 
 const credentials = fs.readFileSync('/home/fran/Documentos/bnext_mongo.pem');
 
