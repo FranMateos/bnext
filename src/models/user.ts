@@ -1,25 +1,16 @@
-import {Entity, Column, PrimaryColumn} from "typeorm";
+import { Entity, Column, ObjectIdColumn, ObjectID, OneToMany } from "typeorm";
+import { Contact } from "./contact";
 
 @Entity()
 export class User {
-    @PrimaryColumn()
-    _id: string;
-    @Column()
-    id:string; // ya sea dni, nie o pasaporte
+    @ObjectIdColumn({ generated: false })
+    _id: ObjectID;
     @Column()
     name: string;
     @Column()
-    surname1: string;
-    @Column()
-    surname2: string;
-    @Column()
-    email: string;
+    lastName: string;
     @Column()
     phone: string;
-    @Column()
-    imei: string;
-    @Column()
-    updated_at: Date;
-    @Column()
-    created_at: Date;
+    // to assign contracts
+    contacts: Array<Contact>;
 }

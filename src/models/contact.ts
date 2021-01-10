@@ -1,8 +1,14 @@
+import { Column, Entity, JoinColumn, ManyToOne, ObjectID, ObjectIdColumn } from "typeorm";
+import { User } from "./user";
+
+@Entity()
 export class Contact {
-    id_user: string;
-    name: string;
-    surname1: string;
-    surname2: string;
-    email: string;
+    @ObjectIdColumn({ generated: false })
+    _id: ObjectID;
+    @Column()
+    contactName: string;
+    @Column()
     phone: string;
+    @Column()
+    id_user: string;
 }

@@ -2,16 +2,15 @@ import { Controller, Get } from '@nestjs/common';
 import { InjectDb } from 'nest-mongodb';
 import { AppService } from './app.service';
 import * as mongo from 'mongodb';
+import { getConnection } from 'typeorm';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService, 
-    @InjectDb() private readonly db: mongo.Db) {
-      console.log(`Conectado a la base de datos ${db.databaseName}`);
-    }
+  
+  constructor(private readonly appService: AppService){}
 
   @Get()
   getHello(): string {
-    return "El servicio está levantado";
+    return JSON.stringify(getConnection().isConnected?'El servicio está levantado':'Hay algún problema con el pool de datos');
   }
 }
