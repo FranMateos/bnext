@@ -11,9 +11,14 @@ export class NeutrinoService {
 
     async verifyNumber(number: string) {
         return await this.http.post(Config.neutrino.url + 'phone-validate', { number: number },
-            { headers: { "user-id": Config.neutrino.user_id, "api-key": Config.neutrino.api_key, "Content-Type": "application/json" } }).subscribe(res => {
+            { headers: { "user-id": Config.neutrino.user_id, "api-key": Config.neutrino.api_key, "Content-Type": "application/json" } })
+            .subscribe(res => {
                 console.log(res.data);
-                return res.data.valid;
+                if(res&&res.data&&res.data.valid){
+                    return res.data.valid;
+                }else{
+                    return false;
+                }
             }, error => {
                 console.log(error);
                 return false;
