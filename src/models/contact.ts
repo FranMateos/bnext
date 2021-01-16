@@ -1,5 +1,4 @@
-import { Column, Entity, JoinColumn, ManyToOne, ObjectID, ObjectIdColumn } from "typeorm";
-import { User } from "./user";
+import { Column, Entity, ObjectID, ObjectIdColumn } from "typeorm";
 
 @Entity()
 export class Contact {

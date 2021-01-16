@@ -1,3 +1,4 @@
+import { type } from "os";
 import { Entity, Column, ObjectIdColumn, ObjectID, OneToMany } from "typeorm";
 import { Contact } from "./contact";
 
@@ -13,4 +14,11 @@ export class User {
     phone: string;
     // to assign contracts
     contacts: Array<Contact>;
+
+    static checkUser(user:User){
+        return (user.name&&typeof user.name=='string'&&user.name!='')&&
+        (user.lastName&&typeof user.lastName=='string'&&user.lastName!='')&&
+        (user.phone&&typeof user.phone=='string'&&user.phone!='');
+    }
+
 }
